@@ -1,0 +1,118 @@
+.nav-link {
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 80px;
+    color: aqua;
+}
+
+a:hover {
+    color: aqua;
+}
+
+.jumbotron-search {
+    background: url("../../../src/assets/flight.jpeg");
+    height: 200px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 5px
+}
+
+.jumbotron-searchResult {
+    background: url("../../../src/assets/airport.jpg");
+    height: 600px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    opacity: 0.7;
+}
+
+.display-3 {
+    text-align: left;
+    font-size: 1em;
+    color: rosybrown;
+    padding: 0px, 0px;
+    height: 30px;
+}
+
+p {
+    text-align: left
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    /* margin: 1em 0; */
+    padding: 0;
+}
+
+.row {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+select {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    width: 200px;
+}
+
+.container {
+    height: 10px;
+}
+
+.search-button {
+    position: relative;
+    top: -12px;
+    text-align: center;
+    height: 50px;
+    font-weight: bold
+}
+
+.breadcrumb {
+    height: 28px;
+    width: 1100px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
+    text-align: center;
+    opacity: 2;
+    background-color: lightblue;
+    font-weight: bolder;
+}
+
+.table-header {
+    height: 28px;
+    width: 1100px;
+    border-bottom-color: black;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    opacity: 2;
+    background-color: crimson;
+    font-weight: bolder;
+    margin-left: -30px;
+    margin-bottom: 2px
+}
+
+.book-button {
+    height: 28px;
+    width: 240px;
+    text-align: center;
+    background-color: rgb(4, 175, 38);
+    margin-bottom: 14px;
+    font-weight: bolder;
+    padding: 0px, 0px;
+}
+
+.btn {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}

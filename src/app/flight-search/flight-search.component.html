@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Flights <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Hotels</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="jumbotron jumbotron-fluid jumbotron-search col-sm-12">
+        <div class="container">
+            <p class="display-3">Flight Search</p>
+            <hr/>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <select class='custom-select form-control' [ngModel]="selectedFromCity" (ngModelChange)="onFromCityChange($event)" name="fromCity" required>
+                            <option value="" selected disabled>From City</option>
+                            <option *ngFor='let option of distinctlistFromCity' [value]="option">{{option}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <select class='custom-select form-control' [ngModel]="selectedDestCity" (ngModelChange)="onDestinationChange($event)" name="toCity" required>
+                        <option value="" selected disabled>Destination City</option>
+                        <option *ngFor='let option of destinationCities' [value]="option">{{option}}</option>
+                    </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-2 form-group">
+                    <input class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dpYMD="bsDatepicker" bsDatepicker [bsConfig]="datepickerConfig" placeholder="Travel Date" [(ngModel)]="dateVal" name="dateVal" required>
+                </div>
+                <div class="col-sm-2 form-group">
+                    <input class="form-control" type="number" min="1" max="5" step="1" pattern="\d+" placeholder="Adults" [(ngModel)]="noOfPassenger" name="noOfPassenger" required>
+                </div>
+
+                <div class="col-sm-2 form-group">
+                    <button class="btn btn-success search-button" type="submit" [disabled]="!f.valid" (click)="doGET()">Search</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+<div class="jumbotron jumbotron-fluid jumbotron-searchResult">
+    <div class="container">
+        <div class="alert alert-danger" role="alert" *ngIf="(erroCode1)">
+            <strong>ERROR!</strong> Something Wrong!! Flight Details are NOT loaded.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="erroCode2">
+            <strong>ERROR!</strong> Something Wrong!! Please Enter Correct Data.
+        </div>
+
+        <div class="alert alert-info" role="alert" [hidden]="flightsAvailableIndicator">
+            <strong>SORRY!</strong> There is no Flights available on the selected date.
+        </div>
+        <div class="row table-header" [hidden]="!flagInd">
+            <div class="col-sm-3 rounded">
+                From City
+            </div>
+            <div class="col-sm-3 rounded">
+                To City
+            </div>
+            <div class="col-sm-3 rounded">
+                Travel Date
+            </div>
+        </div>
+        <div class="row" *ngFor="let values of searchedFlightDetails">
+            <nav aria-label="breadcrumb">
+                <div class="row breadcrumb">
+                    <div class="col-sm-3 rounded">
+                        <li class="breadcrumb-item" aria-current="page">{{values.fromCity}}</li>
+                    </div>
+                    <div class="col-sm-3 rounded">
+                        <li class="breadcrumb-item" aria-current="page">{{values.toCity}}</li>
+                    </div>
+                    <div class="col-sm-3 rounded">
+                        <li class="breadcrumb-item" aria-current="page">{{values.dateVal}}</li>
+                    </div>
+                    <div class="col-sm-3 ">
+                        <button class="btn btn-success book-button" type="submit" [disabled]="!f.valid" (click)="doBook(values.fromCity,values.toCity,values.dateVal)">Reserve</button>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+    </div>
+</div>
